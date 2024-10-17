@@ -1,21 +1,31 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getAllAnimals, updateStatus } from "../../../api/services/animals";
 import { Animals } from "../../../models/interfaces/animals";
 import { Button } from "primereact/button";
-import { AnimalStatus } from "../../../models/enums/Animals";
+import { AnimalCategory, AnimalStatus } from "../../../models/enums/Animals";
 import { format, parseISO } from "date-fns";
+import AuthUtils from "../../../utils/auth-utils";
+import { Navigate, useNavigate } from "react-router-dom";
+import { Toast, ToastMessage } from "primereact/toast";
 
 
 export const UseDashboard = () => {
     const [animals, setAnimals] = useState<Animals[]>([]);
     const [selectedAnimal, setSelectedAnimal] = useState<Animals>();
+    const toastTopRight = useRef(null);
+    const navigate = useNavigate()
 
     const getAnimals = async () => {
         const res = await getAllAnimals();
         setAnimals(res)
     }
 
+    const showMessage = (ref: React.RefObject<Toast>, severity: ToastMessage['severity']) => {
+        ref.current?.show({ severity: severity, summary: "Atualização de status", detail: "status atualizado", life: 3000 });
+    };
+
     useEffect(() => {
+        !AuthUtils.isAuthenticated() && navigate("/")
         getAnimals()
     }, []);
 
@@ -25,6 +35,10 @@ export const UseDashboard = () => {
 
     const statusBodyTemplate = (animal: Animals) => {
         return animal.status === AnimalStatus.ENABLED ? "Disponivel" : "Adotado"
+    };
+
+    const categoryBodyTemplate = (animal: Animals) => {
+        return animal.category === AnimalCategory.DOG ? "Cachorro" : "Gato"
     };
 
     const birthDateBodyTemplate = (animal: Animals) => {
@@ -38,9 +52,12 @@ export const UseDashboard = () => {
     );
 
     const updateStatusAnimal = async () => {
-        console.log(selectedAnimal)
         const res = await updateStatus(selectedAnimal?.id!)
-        setAnimals([res, ...animals.filter(element => element.id !== res.id)])
+        if(res.id){
+            showMessage(toastTopRight, 'success')
+            setAnimals([res, ...animals.filter(element => element.id !== res.id)])
+        }
+        !AuthUtils.isAuthenticated() && navigate("/")
         setSelectedAnimal(undefined)
     }
 
@@ -63,6 +80,8 @@ export const UseDashboard = () => {
         selectedAnimal,
         setSelectedAnimal,
         statusBodyTemplate,
-        birthDateBodyTemplate
+        birthDateBodyTemplate,
+        categoryBodyTemplate,
+        toastTopRight
     }
 }

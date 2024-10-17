@@ -6,6 +6,7 @@ export const Container = styled.input`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: center;
     border-radius: 14px;
     background: #313945;
     border: 1px solid #5B636F;

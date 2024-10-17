@@ -22,6 +22,7 @@ export const ContainerDash = styled.div`
 
 export const ContainerTableAndTitle = styled.div`
     width: 80%;
+    max-height: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;

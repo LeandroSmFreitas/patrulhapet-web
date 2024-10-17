@@ -12,7 +12,6 @@ export const Container = styled.div`
 export const ContainerDash = styled.div`
     width: calc(100% - 290px);
     min-height: calc(100vh - 40px);
-    max-height: calc(100vh - 40px);
     border-radius: 20px;
     background: #2a3240;
     display:flex;
@@ -33,10 +32,23 @@ export const TitleDash = styled.span`
 
 export const ContainerForm = styled.form`
     width: 50%;
-    height: 600px;
+    min-height: 600px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 70px;
     border-radius: 20px;
+`
+
+export const ConfirmButton = styled.button`
+    width: 100%;
+    height: 48px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background: #1B85F3;
+    border-radius: 14px;
+    margin-top: 30px;
+    outline: none;
 `

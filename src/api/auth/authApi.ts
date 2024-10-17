@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import { Login, LoginResponse } from "../../models/interfaces/auth";
+import { Login, LoginResponse, Register } from "../../models/interfaces/auth";
 import api from "../api";
 
 
@@ -9,7 +9,12 @@ export const AuthAPI = () => {
         return api.post<LoginResponse>(`/auth/login`, formLogin);
     };
 
+    const registerAuth = (formRegister: Register): Promise<AxiosResponse<LoginResponse>> => {
+        return api.post<LoginResponse>(`/auth/register`, formRegister);
+    };
+
     return {
-        postAuth
+        postAuth,
+        registerAuth
     };
   };

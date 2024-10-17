@@ -2,9 +2,10 @@ import React from 'react'
 import * as S from './styles'
 import { FaHouse, FaPlus } from 'react-icons/fa6'
 import { useSideBar } from './hooks/sideBarHook'
+import { IoExitOutline } from 'react-icons/io5'
 
 const SideBar = () => {
-    const { selectedPage, handleChangePage } = useSideBar()
+    const { selectedPage, handleChangePage, handleLoggout } = useSideBar()
 
     return (
         <S.Container>
@@ -19,6 +20,10 @@ const SideBar = () => {
                 <FaPlus/>
                 <S.TitleButton>Cadastrar animal</S.TitleButton>
             </S.ContainerButtonAndImage>
+            <S.ContainerLoggout onClick={handleLoggout}>
+                <S.TitleLoggout>Sair</S.TitleLoggout>
+                <IoExitOutline />
+            </S.ContainerLoggout>
         </S.Container>
     )
 }

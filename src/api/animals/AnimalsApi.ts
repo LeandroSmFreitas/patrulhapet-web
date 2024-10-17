@@ -1,7 +1,7 @@
 import { AxiosResponse } from "axios";
 import { Login, LoginResponse } from "../../models/interfaces/auth";
 import api from "../api";
-import { Animals } from "../../models/interfaces/animals";
+import { Animals, RegisterAnimalFormInputs } from "../../models/interfaces/animals";
 
 
 export const AnimalsAPI = () => {
@@ -14,8 +14,13 @@ export const AnimalsAPI = () => {
         return api.patch<Animals>(`/animals/${id}/status`);
     };
 
+    const registerAnimal = (animal: RegisterAnimalFormInputs): Promise<AxiosResponse<Animals>> => {
+        return api.post<Animals>(`/animals`, animal);
+    };
+
     return {
         getAllAnimals,
-        updateStatus
+        updateStatus,
+        registerAnimal
     };
   };

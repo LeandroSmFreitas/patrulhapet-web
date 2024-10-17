@@ -1,4 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom"
+import AuthUtils from "../../../utils/auth-utils"
 
 
 export const useSideBar = () => {
@@ -13,8 +14,14 @@ export const useSideBar = () => {
         navigate(page)
     }
 
+    const handleLoggout = () => {
+        AuthUtils.removeToken()
+        navigate("/")
+    }
+
     return {
         selectedPage,
-        handleChangePage
+        handleChangePage,
+        handleLoggout
     }
 }

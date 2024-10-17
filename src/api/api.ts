@@ -1,5 +1,6 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosRequestHeaders } from 'axios';
 import AuthUtils from '../utils/auth-utils';
+import { useNavigate } from 'react-router-dom';
 
 const createApiInstance = (): AxiosInstance => {
   const config: AxiosRequestConfig = {
@@ -19,6 +20,18 @@ const createApiInstance = (): AxiosInstance => {
     }
     return config;
   });
+
+  instance.interceptors.response.use(
+    (response) => {
+      return response;
+    },
+    (error) => {
+      if (error.response && error.response.status === 403) {
+        AuthUtils.removeToken();
+      }
+      return Promise.reject(error);
+    }
+  );
 
   return instance;
 };

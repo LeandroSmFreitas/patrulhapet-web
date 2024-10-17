@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const ContainerFormAndImage = styled.div`
-    width: 400px;
+    width: 500px;
     height: 854px;
     display: flex;
     flex-direction: column;
@@ -12,7 +12,7 @@ export const ContainerFormAndImage = styled.div`
 
 export const ContainerForm = styled.form`
     width: 100%;
-    height: 600px;
+    min-height: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;

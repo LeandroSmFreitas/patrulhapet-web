@@ -53,3 +53,32 @@ export const TitleButton = styled.span`
     color: #FFFFFF;
     margin-left: 10px;
 `
+
+export const ContainerLoggout = styled.button`
+    width: 220px;
+    height: 64px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px 12px 12px;
+    gap: 12px;
+    background: #606873;
+    border: 1px solid #606873;
+    border-radius: 14px;
+    position: absolute;
+    bottom: 20px;
+    cursor: pointer;
+    outline: none;
+`
+
+export const TitleLoggout = styled.span`
+    font-family: 'Catamaran';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-left: 10px;
+`
+
