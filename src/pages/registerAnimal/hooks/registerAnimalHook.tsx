@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { RegisterAnimalFormInputs } from '../../../models/interfaces/animals';
 import { registerAnimal } from '../../../api/services/animals';
 import { AnimalCategory, AnimalStatus } from '../../../models/enums/Animals';
-import { ToastMessage } from 'primereact/toast';
+import { Toast, ToastMessage } from 'primereact/toast';
 
 const useRegisterAnimal = () => {
     const navigate = useNavigate()
@@ -26,7 +26,7 @@ const useRegisterAnimal = () => {
         category: Yup.string().required('Seleção é obrigatória'),
     });
       
-    const { control, register, handleSubmit, formState: { errors } } = useForm<RegisterAnimalFormInputs>({
+    const { control, register, handleSubmit, formState: { errors } } = useForm<RegisterAnimalFormInputs, any>({
         resolver: yupResolver(schema),
     });
     

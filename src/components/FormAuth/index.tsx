@@ -15,8 +15,8 @@ const FormAuth = () => {
                 <S.Description>{typeForm === FormAuthType.LOGIN ? "Bem-vindo de volta! Faça o seu login para acessar o seu painel" : "Bem-vindo! preencha os campos abaixo para criar a sua conta."}</S.Description>
                 { typeForm === FormAuthType.REGISTER && <Input placeholder='Username' {...register("username")} error={errors.username?.message}/> }
                 <Input placeholder='Email' {...register("email")} error={errors.email?.message}/>
-                <Input placeholder='Senha' {...register("password")} error={errors.password?.message}/>
-                { typeForm === FormAuthType.REGISTER && <Input placeholder='Confirmar senha' {...register("confirmPassword")} error={errors.confirmPassword?.message}/> }
+                <Input placeholder='Senha' type='password' {...register("password")} error={errors.password?.message}/>
+                { typeForm === FormAuthType.REGISTER && <Input type='password' placeholder='Confirmar senha' {...register("confirmPassword")} error={errors.confirmPassword?.message}/> }
                 { typeForm === FormAuthType.REGISTER && <Input placeholder='url da imagem de perfil' {...register("imageUrl")} error={errors.imageUrl?.message}/> }
                 <S.ConfirmButton type='submit'>{typeForm === FormAuthType.LOGIN ? "Fazer login" : "Criar conta"}</S.ConfirmButton>
                 <S.ContainerDescriptionHaveAccount>

@@ -15,7 +15,7 @@ export interface RegisterAnimalFormInputs {
     name: string;
     description: string;
     imageUrl: string;
-    birthDate: string;
+    birthDate: Date;
     status: string;
     category: string;
   }
