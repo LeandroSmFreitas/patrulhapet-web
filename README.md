@@ -1,50 +1,32 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Patrulha Pet
 
-Currently, two official plugins are available:
+**Patrulha Pet** é um projeto de gestão de adoção de animais. Este sistema tem como objetivo facilitar a adoção responsável de pets.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## Visão Geral do Projeto
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Neste projeto, utilizei várias tecnologias poderosas para criar uma aplicação dinâmica, além de utilizar o node 20.
 
-- Configure the top-level `parserOptions` property like this:
+	•	React + typescript: Desenvolvi a interface do usuário usando React e typescript, o que permitiu a criação de componentes reutilizáveis e uma renderização eficiente da interface.
+	•	Styled-Components: Para melhorar o estilo da aplicação, implementei Styled-Components. Essa abordagem permitiu escrever código CSS real para estilizar os componentes, facilitando a manutenção e escalabilidade do design.
+	•	Axios: Para realizar requisições HTTP, usei o Axios. Essa biblioteca simplificou o processo de buscar e enviar dados para APIs externas, garantindo uma comunicação eficiente entre cliente e servidor.
+    •	React-Hook-Form: Para lidar com formulários de forma eficiente, utilizei o React-Hook-Form. Essa biblioteca facilitou o gerenciamento de formulários, reduzindo a quantidade de código e otimizando o desempenho.
+	•	Yup: Para validação de dados dos formulários, integrei o Yup, permitindo validações simples e robustas que garantem a consistência dos dados inseridos pelo usuário.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+
+## Como rodar o projeto
+
+Instale as dependencias:
+
+```bash
+  yarn
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+ponto de atenção: lembre-se de estar rodando a api na rota http://localhost:8080 e caso esta aplicação web rode em outra porta ao invés da 5173, deve-se arrumar o cors no back-end
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Development mode:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+  yarn dev
 ```
